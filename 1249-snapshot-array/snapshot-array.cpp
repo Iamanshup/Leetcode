@@ -24,20 +24,7 @@ public:
     
     int get(int index, int snap_id) {
         auto it = upper_bound(v[index].begin(), v[index].end(), make_pair(snap_id, INT_MAX));
-        // auto it = upper_bound(v[index].begin(), v[index].end(), make_pair(snap_id, INT_MAX));
         return prev(it)->second;
-
-        // int l = 0, r = v[index].size() - 1;
-        // int ind = 0;
-        // while (l <= r) {
-        //     int m = l + (r - l) / 2;
-        //     if (v[index][m].first == snap_id) {
-        //         ind = m;
-        //         l = m + 1;
-        //     } else if (v[index][m].first < snap_id) l = m + 1;
-        //     else r = m - 1;
-        // }
-        // return v[index][ind].second;
     }
 };
 
