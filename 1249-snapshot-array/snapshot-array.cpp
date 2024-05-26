@@ -23,6 +23,9 @@ public:
     }
     
     int get(int index, int snap_id) {
+        // auto it = upper_bound(v[index].begin(), v[index].end(), make_pair(snap_id, INT_MAX));
+        // return prev(it) -> second;
+
         int l = 0, r = v[index].size() - 1;
         int ind = 0;
         while (l <= r) {
