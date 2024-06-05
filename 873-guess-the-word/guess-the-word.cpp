@@ -34,7 +34,7 @@ public:
                 }
             }
             words = candidates;
-            random_shuffle(words.begin(), words.end()); 
+            // random_shuffle(words.begin(), words.end()); 
         }
     }
 };
