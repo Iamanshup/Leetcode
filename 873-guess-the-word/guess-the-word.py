@@ -6,7 +6,7 @@
 #     def guess(self, word: str) -> int:
 
 
-from random import random
+from random import random, shuffle
 
 
 class Solution:
@@ -20,5 +20,6 @@ class Solution:
             if x == 6:
                 return word
             words = [word2 for word2 in words if get_match(word, word2) == x]
+            shuffle(words)
 
         return None
