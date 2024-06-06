@@ -5,9 +5,10 @@ private:
     int solve(int n, int absent, int late, long long dp[][2][3]) {
         if (n == 0 || absent < 0 || late < 0) return 0;
         if (n == 1) {
-            if (absent > 0 && late > 0) return 3;
-            if (absent > 0 || late > 0) return 2;
-            return 1;
+            return 1 + int(absent > 0) + int(late > 0);
+            // if (absent > 0 && late > 0) return 3;
+            // if (absent > 0 || late > 0) return 2;
+            // return 1;
         }
         if (dp[n][absent][late] != -1) {
             return dp[n][absent][late];
