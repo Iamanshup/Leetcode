@@ -2,7 +2,7 @@ class Solution {
 private:
     const long long mod = 1e9 + 7;
 
-    int solve(int n, int absent, int late, long long dp[n+1][2][3]) {
+    int solve(int n, int absent, int late, long long dp[][2][3]) {
         if (n == 0 || absent < 0 || late < 0) return 0;
         if (n == 1) {
             if (absent > 0 && late > 0) return 3;
