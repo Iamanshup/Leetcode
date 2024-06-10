@@ -1,27 +1,25 @@
 class Solution {
-public:
+private:
+    int dp[3001];
 
-bool dp[1001];
-unordered_map<string, bool> mp;
-
-    bool wordBreak(string s, vector<string>& wordDict) {
-        for(string w : wordDict) {
-            mp[w] = 1;
-        }
-        memset(dp, 0, sizeof dp);
-
+    bool solve(int ind, string s, vector<string>& wordDict) {
         int n = s.size();
+        if (ind == n) return true;
+        if (dp[ind] != -1) return dp[ind];
 
-        for(int i = 1; i <= n; ++i) {
-            if(!dp[i] and mp[s.substr(0, i)]) dp[i] = 1;
-
-            if(dp[i]) {
-                for(int j = i+1; j <= n; ++j) {
-                    if(!dp[j] and mp[s.substr(i, j-i)]) dp[j] = 1;
-                    // if(j == n and dp[j]) return 1;
-                }
+        bool f = false;
+        for (string w : wordDict) {
+            if (w.size() > n - ind) continue;
+            if (s.substr(ind, w.size()) == w) {
+                f |= solve(ind + w.size(), s, wordDict);
             }
         }
-        return dp[n];
+        return dp[ind] = f;
+    }
+
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        memset(dp, -1, sizeof dp);
+        return solve(0, s, wordDict);
     }
 };
