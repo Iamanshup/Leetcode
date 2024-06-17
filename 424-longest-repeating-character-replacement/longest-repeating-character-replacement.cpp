@@ -28,7 +28,7 @@ public:
         int n = s.size();
         int low = 1, high = n+1;
 
-        while (low <= high-2) {
+        while (low + 1 < high) {
             int mid = low + (high - low) / 2;
             if (canMakeValidSubstring(mid, s, k)) {
                 low = mid;
