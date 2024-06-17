@@ -26,16 +26,18 @@ private:
 public:
     int characterReplacement(string s, int k) {
         int n = s.size();
-        int low = 1, high = n+1;
+        int low = 1, high = n;
 
-        while (low + 1 < high) {
+        int ans = 1;
+        while (low <= high) {
             int mid = low + (high - low) / 2;
             if (canMakeValidSubstring(mid, s, k)) {
-                low = mid;
+                ans = mid;
+                low = mid+1;
             } else {
-                high = mid;
+                high = mid-1;
             }
         }
-        return low;
+        return ans;
     }
 };
